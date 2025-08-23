@@ -2,6 +2,8 @@ import torch as t
 from sklearn.metrics import f1_score
 from tqdm.autonotebook import tqdm
 
+from model import ResNet
+from data import ChallengeDataset
 
 class Trainer:
 
@@ -48,6 +50,8 @@ class Trainer:
               output_names = ['output'], # the model's output names
               dynamic_axes={'input' : {0 : 'batch_size'},    # variable lenght axes
                             'output' : {0 : 'batch_size'}})
+    
+    model = ResNet().to(device)
             
     def train_step(self, x, y):
         # perform following steps:

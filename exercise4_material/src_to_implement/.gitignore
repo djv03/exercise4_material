@@ -4,3 +4,4 @@ Scripts/
 images/
 include/
 share/
+__pycache__/
