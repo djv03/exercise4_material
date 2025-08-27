@@ -5,3 +5,4 @@ images/
 include/
 share/
 __pycache__/
+dump.py

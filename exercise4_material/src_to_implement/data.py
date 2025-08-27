@@ -59,9 +59,11 @@ class ChallengeDataset(Dataset):
     def __len__(self):
         return len(self.data)
     
-    def _getitems_(self,index):
+    def __getitem__(self,index):
         row= self.data.iloc[index]
         img_path= row['filename']
+        
+        # print(f"[DEBUG] Current image path: {img_path}")
         
         # read image
         if not os.path.exists(img_path):
@@ -77,6 +79,6 @@ class ChallengeDataset(Dataset):
         label= torch.tensor([row['crack'],row['inactive']],dtype= torch.float32)
         
         # apply transformation
-        img= self.translate(img)
+        img= self.transform(img)
         
         return img,label
